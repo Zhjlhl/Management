@@ -1,6 +1,7 @@
 package cn.edu.zjut.management.servive.Impl;
 
 import cn.edu.zjut.management.dao.StudentMapper;
+import cn.edu.zjut.management.pojo.Area;
 import cn.edu.zjut.management.pojo.Student;
 import cn.edu.zjut.management.servive.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public Student findStudentById(int id) {
-        return null;
+    public Student selectStudentById(int id) {
+        return studentMapper.selectStudentById(id);
     }
 }
