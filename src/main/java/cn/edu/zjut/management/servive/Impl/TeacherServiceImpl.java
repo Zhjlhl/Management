@@ -36,6 +36,6 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public int deleteTeacherById(int id) {
-        return teacherService.deleteTeacherById(id);
+        return teacherMapper.deleteTeacherById(id);
     }
 }
