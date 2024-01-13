@@ -16,11 +16,15 @@ public interface AreaMapper {
     public Area selectAreaById(int id);
 
     @Select("SELECT * FROM management.may_area")
+    @ResultMap("selectArea")
     public List<Area> selectAllArea();
 
+    @Insert("INSERT INTO management.may_area(my_Aid, my_Aname) VALUES(#{id}, #{name})")
     public int addArea(Area area);
 
+    @Update("UPDATE management.may_area SET my_Aid=#{id}, my_Aname=#{name} WHERE my_Aid=#{id}")
     public int updateArea(Area area);
 
+    @Delete("DELETE FROM management.may_area WHERE my_Aid=#{id}")
     public int deleteAreaById(int id);
 }
