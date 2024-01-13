@@ -50,11 +50,7 @@ public class AreaController {
 
     @GetMapping("/deleteAreaById/{id}")
     public int deleteAreaById(@PathVariable("id") int id){
-        /*Area area = new Area();
-        area.setId(id);
-        area.setName(name);
-        System.out.println(id);
-        System.out.println(name);*/
+
         return areaService.deleteAreaById(id);
     }
 }
