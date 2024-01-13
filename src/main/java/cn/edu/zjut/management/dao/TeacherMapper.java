@@ -8,6 +8,9 @@ import java.util.List;
 @Mapper
 public interface TeacherMapper {
 
+
+
+    @Select("SELECT * FROM management.may_teacher WHERE my_Tid=#{id}")
     @Results(id = "selectTeacher", value = {
             @Result(property = "id", column = "my_Tid"),
             @Result(property = "name", column = "my_Tname"),
@@ -15,9 +18,6 @@ public interface TeacherMapper {
             @Result(property = "position", column = "my_Tposition"),
             @Result(property = "phone", column = "my_Tphone")
     })
-
-    @Select("SELECT * FROM management.may_teacher WHERE my_Tid=#{id}")
-    @ResultMap("selectTeacher")
     public Teacher selectTeacherById(int id);
 
     @Select("SELECT * FROM management.may_teacher")

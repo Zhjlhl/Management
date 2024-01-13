@@ -9,6 +9,9 @@ import java.util.List;
 @Mapper
 public interface ReportMapper {
 
+
+
+    @Select("SELECT * FROM management.may_report WHERE my_id=#{id}")
     @Results(id = "selectReport", value = {
             @Result(property = "id", column = "my_id"),
             @Result(property = "student", column = "my_Sid",
@@ -19,9 +22,6 @@ public interface ReportMapper {
                     one = @One(select = "cn.edu.zjut.management.dao.TeacherMapper.selectTeacherById")),
             @Result(property = "score", column = "my_Rscore")
     })
-
-    @Select("SELECT * FROM management.may_report WHERE my_id=#{id}")
-    @ResultMap("selectReport")
     public Report selectReportById(int id);
 
     @Select("SELECT * FROM management.may_report")

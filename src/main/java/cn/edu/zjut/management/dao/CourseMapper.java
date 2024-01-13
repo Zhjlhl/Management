@@ -8,6 +8,11 @@ import java.util.List;
 @Mapper
 public interface CourseMapper {
 
+
+
+
+
+    @Select("SELECT * FROM management.may_course WHERE my_Cid=#{id}")
     @Results(id = "selectCourse", value = {
             @Result(property = "id", column = "my_Cid"),
             @Result(property = "name", column = "my_Cname"),
@@ -20,11 +25,7 @@ public interface CourseMapper {
             @Result(property = "classes", column = "my_Classid",
                     one = @One(select = "cn.edu.zjut.management.dao.ClassesMapper.selectClassesById")),
             @Result(property = "position", column = "my_Cposition")
-
     })
-
-    @Select("SELECT * FROM management.may_course WHERE my_Cid=#{id}")
-    @ResultMap("selectCourse")
     public Course selectCourseById(int id);
 
     @Select("SELECT * FROM management.may_course")
