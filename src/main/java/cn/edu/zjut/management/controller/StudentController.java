@@ -25,6 +25,11 @@ public class StudentController {
         return studentService.selectStudentById(studentId);
     }
 
+    @GetMapping("/selectAllStudent")
+    public List<Student> selectAllStudent(){
+        return studentService.selectAllStudent();
+    }
+
     @RequestMapping("/addStudent")
     public int addStudent(@RequestParam("studentId") int id,
                           @RequestParam("studentName") String name,
@@ -40,6 +45,6 @@ public class StudentController {
         student.setArea(area);
         student.setClasses(classes);
         return studentService.addStudent(student);
-    };
+    }
 
 }
