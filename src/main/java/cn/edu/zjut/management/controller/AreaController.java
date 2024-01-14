@@ -14,7 +14,7 @@ public class AreaController {
     @Autowired
     private AreaService areaService;
 
-    @RequestMapping("/selectAreaById")
+    @GetMapping("/selectAreaById")
     public Area selectAreaById(@RequestParam("areaId") int areaId){
         Area area = areaService.selectAreaById(areaId);
         return area;
@@ -26,31 +26,18 @@ public class AreaController {
         return areas;
     }
 
-    @GetMapping("/addArea/{id}/{name}")
-    public int addArea(@PathVariable("id") int id,
-                       @PathVariable("name") String name){
-        Area area = new Area();
-        area.setId(id);
-        area.setName(name);
-        System.out.println(id);
-        System.out.println(name);
+    @PostMapping(value = "/addArea")
+    public int addArea(@RequestBody Area area){
         return areaService.addArea(area);
     }
 
-    @GetMapping("/updateArea/{id}/{name}")
-    public int updateArea(@PathVariable("id") int id,
-                       @PathVariable("name") String name){
-        Area area = new Area();
-        area.setId(id);
-        area.setName(name);
-        System.out.println(id);
-        System.out.println(name);
+    @PutMapping("/updateArea")
+    public int updateArea(@RequestBody Area area){
         return areaService.updateArea(area);
     }
 
-    @GetMapping("/deleteAreaById/{id}")
-    public int deleteAreaById(@PathVariable("id") int id){
-
+    @DeleteMapping("/deleteAreaById")
+    public int deleteAreaById(@RequestParam("areaId") int id){
         return areaService.deleteAreaById(id);
     }
 }
