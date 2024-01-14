@@ -3,9 +3,7 @@ package cn.edu.zjut.management.controller;
 import cn.edu.zjut.management.pojo.Course;
 import cn.edu.zjut.management.servive.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,10 +21,22 @@ public class CourseController {
 
     @RequestMapping("/selectAllCourse")
     public List<Course> selectAllCourse(){
-        List<Course> courses = courseService.selectAllCourse();
-        return courses;
+        return courseService.selectAllCourse();
     };
 
-    @RequestMapping("/addCourse")
-    public int addCourse(@RequestParam);
+    @PostMapping(value = "/addCourse")
+    public int addCourse(@RequestBody Course course) {
+        return courseService.addCourse(course);
+    }
+
+    @PutMapping("/updateCourse")
+    public int updateCourse(@RequestBody Course course) {
+        return courseService.updateCourse(course);
+    }
+
+    @DeleteMapping("/deleteCourseById")
+    public int deleteCourseById(@RequestParam int id) {
+        return courseService.deleteCourseById(id);
+    }
+
 }

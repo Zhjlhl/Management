@@ -27,7 +27,7 @@ public interface TeacherMapper {
     @Insert("INSERT INTO management.may_teacher VALUES (#{id},#{name},#{gender},#{age},#{position},#{phone})")
     public int addTeacher(Teacher teacher);
 
-    @Update("UPDATE management.may_teacher SET my_Tid=#{id},my_Tname=#{name},my_Tgender=#{gender},my_Tage=#{age},my_Tposition=#{position},my_Tphone=#{phone}")
+    @Update("UPDATE management.may_teacher SET my_Tid=#{id},my_Tname=#{name},my_Tgender=#{gender},my_Tage=#{age},my_Tposition=#{position},my_Tphone=#{phone} WHERE my_Tid=#{id}")
     public int updateTeacher(Teacher teacher);
 
     @Delete("DELETE FROM management.may_teacher WHERE my_Tid=#{id}")

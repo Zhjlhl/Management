@@ -19,11 +19,9 @@ public class AreaController {
         Area area = areaService.selectAreaById(areaId);
         return area;
     }
-
     @GetMapping("/selectAllArea")
     public List<Area> selectAllArea(){
-        List<Area> areas = areaService.selectAllArea();
-        return areas;
+        return areaService.selectAllArea();
     }
 
     @PostMapping(value = "/addArea")

@@ -5,11 +5,9 @@ import cn.edu.zjut.management.pojo.Area;
 import cn.edu.zjut.management.pojo.Classes;
 import cn.edu.zjut.management.pojo.Student;
 import cn.edu.zjut.management.servive.StudentService;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,52 +27,21 @@ public class StudentController {
     public List<Student> selectAllStudent(){
         List<Student> students = studentService.selectAllStudent();
         return students;
-    };
+    }
 
-    @RequestMapping("/addStudent")
-    public int addStudent(@RequestParam("id") int id,
-                          @RequestParam("name") String name,
-                          @RequestParam("gender") String gender,
-                          @RequestParam("age") int age,
-                          @RequestParam("areaId") int areaId,
-                          @RequestParam("classesId") int classesId,
-                          @RequestParam("credits") float credits){
-        Student student = new Student();
-        student.setId(id);
-        student.setName(name);
-        student.setGender(gender);
-        student.setAge(age);
-        Area area = new Area();
-        area.setId(areaId);
-        Classes classes = new Classes();
-        classes.setId(classesId);
-        student.setArea(area);
-        student.setClasses(classes);
-        student.setCredits(credits);
+    @PostMapping(value = "/addStudent")
+    public int addStudent(@RequestBody Student student){
         return studentService.addStudent(student);
-    };
+    }
 
-    @RequestMapping("/updateStudent")
-    public int updateStudent(@RequestParam("id") int id,
-                             @RequestParam("name") String name,
-                             @RequestParam("areaId") int areaId,
-                             @RequestParam("classesId") int classesId
-                            ){
-        Student student = new Student();
-        student.setId(id);
-        student.setName(name);
-        Area area = new Area();
-        area.setId(areaId);
-        Classes classes = new Classes();
-        classes.setId(classesId);
-        student.setArea(area);
-        student.setClasses(classes);
+    @PutMapping("/updateStudent")
+    public int updateStudent(@RequestBody Student student){
         return studentService.updateStudent(student);
-    };
+    }
 
-    @RequestMapping("deleteStudentById")
+    @DeleteMapping("deleteStudentById")
     public int deleteStudentById(@RequestParam("id") int id){
         return studentService.deleteStudentById(id);
-    };
+    }
 
 }

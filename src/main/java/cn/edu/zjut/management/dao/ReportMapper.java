@@ -13,14 +13,15 @@ public interface ReportMapper {
 
     @Select("SELECT * FROM management.may_report WHERE my_id=#{id}")
     @Results(id = "selectReport", value = {
-            @Result(property = "id", column = "my_id"),
             @Result(property = "student", column = "my_Sid",
                     one = @One(select = "cn.edu.zjut.management.dao.StudentMapper.selectStudentById")),
             @Result(property = "course", column = "my_Cid",
                     one = @One(select = "cn.edu.zjut.management.dao.CourseMapper.selectCourseById")),
             @Result(property = "teacher", column = "my_Tid",
                     one = @One(select = "cn.edu.zjut.management.dao.TeacherMapper.selectTeacherById")),
-            @Result(property = "score", column = "my_Rscore")
+            @Result(property = "score", column = "my_Rscore"),
+            @Result(property = "id", column = "my_id")
+
     })
     public Report selectReportById(int id);
 
