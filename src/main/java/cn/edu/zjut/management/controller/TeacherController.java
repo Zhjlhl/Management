@@ -65,6 +65,7 @@ public class TeacherController {
 
     @RequestMapping("/deleteTeacherById")
     public int deleteTeacherById(@RequestParam("teacherId") int id){
+
         return teacherService.deleteTeacherById(id);
     }
 

@@ -25,11 +25,41 @@ public class StudentController {
         return studentService.selectStudentById(studentId);
     }
 
+    @RequestMapping("/selectAllStudent")
+    public List<Student> selectAllStudent(){
+        List<Student> students = studentService.selectAllStudent();
+        return students;
+    };
+
     @RequestMapping("/addStudent")
-    public int addStudent(@RequestParam("studentId") int id,
-                          @RequestParam("studentName") String name,
+    public int addStudent(@RequestParam("id") int id,
+                          @RequestParam("name") String name,
+                          @RequestParam("gender") String gender,
+                          @RequestParam("age") int age,
                           @RequestParam("areaId") int areaId,
-                          @RequestParam("classesId") int classesId){
+                          @RequestParam("classesId") int classesId,
+                          @RequestParam("credits") float credits){
+        Student student = new Student();
+        student.setId(id);
+        student.setName(name);
+        student.setGender(gender);
+        student.setAge(age);
+        Area area = new Area();
+        area.setId(areaId);
+        Classes classes = new Classes();
+        classes.setId(classesId);
+        student.setArea(area);
+        student.setClasses(classes);
+        student.setCredits(credits);
+        return studentService.addStudent(student);
+    };
+
+    @RequestMapping("/updateStudent")
+    public int updateStudent(@RequestParam("id") int id,
+                             @RequestParam("name") String name,
+                             @RequestParam("areaId") int areaId,
+                             @RequestParam("classesId") int classesId
+                            ){
         Student student = new Student();
         student.setId(id);
         student.setName(name);
@@ -39,7 +69,12 @@ public class StudentController {
         classes.setId(classesId);
         student.setArea(area);
         student.setClasses(classes);
-        return studentService.addStudent(student);
+        return studentService.updateStudent(student);
+    };
+
+    @RequestMapping("deleteStudentById")
+    public int deleteStudentById(@RequestParam("id") int id){
+        return studentService.deleteStudentById(id);
     };
 
 }
