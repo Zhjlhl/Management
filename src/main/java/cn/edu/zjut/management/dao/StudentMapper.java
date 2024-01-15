@@ -23,6 +23,11 @@ public interface StudentMapper {
     })
     public Student selectStudentById(int id);
 
+    /*@Select("SELECT * FROM management.may_student WHERE my_Aid=#{id}")
+    @ResultMap("selectStudent")
+    public List<Student> selectStudentByAreaId(int id);*/
+
+
     @Select("SELECT * FROM management.may_student")
     @ResultMap("selectStudent")
     public List<Student> selectAllStudent();

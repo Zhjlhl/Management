@@ -12,6 +12,8 @@ public interface AreaMapper {
     @Results(id = "selectArea", value = {
             @Result(property = "id", column = "my_Aid"),
             @Result(property = "name", column = "my_Aname")
+           /* @Result(property = "studentList", column = "my_Aid",
+                    many = @Many(select = "cn.edu.zjut.management.dao.StudentMapper.selectStudentByAreaId"))*/
     })
     public Area selectAreaById(int id);
 

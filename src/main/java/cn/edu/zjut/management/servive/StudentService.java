@@ -1,6 +1,7 @@
 package cn.edu.zjut.management.servive;
 
 import cn.edu.zjut.management.pojo.Area;
+import cn.edu.zjut.management.pojo.Report;
 import cn.edu.zjut.management.pojo.Student;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface StudentService {
     public int updateStudent(Student student);
 
     public int deleteStudentById(int id);
+
+    public List<Report> selectReportByStudentId(int id);
 }

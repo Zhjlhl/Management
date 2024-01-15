@@ -3,6 +3,7 @@ package cn.edu.zjut.management.controller;
 
 import cn.edu.zjut.management.pojo.Area;
 import cn.edu.zjut.management.pojo.Classes;
+import cn.edu.zjut.management.pojo.Report;
 import cn.edu.zjut.management.pojo.Student;
 import cn.edu.zjut.management.servive.StudentService;
 import org.apache.ibatis.annotations.Delete;
@@ -43,5 +44,10 @@ public class StudentController {
     public int deleteStudentById(@RequestParam("id") int id){
         return studentService.deleteStudentById(id);
     }
+
+    @RequestMapping("/selectReportByStudentId")
+    public List<Report> selectReportByStudentId(@RequestParam("id") int id){
+        return studentService.selectReportByStudentId(id);
+    };
 
 }
